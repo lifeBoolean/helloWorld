@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var jsonStr = '{"id": "kang", "name": "강호동", "age": 50}';
+        var jsonObj = JSON.parse(jsonStr);
+        console.log(jsonObj.name);
+
+        var data = {id:"kang", name:"강호동"};
+        var json = JSON.stringify(data);
+        alert(json);
+
+    </script>
+    
+</body>
+</html>
