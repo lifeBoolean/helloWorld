@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const hoisting = () => {
+  console.log("First-Name:", name);
+  var name = "Marcus";
+  console.log("Last-Name:", name);
+}
+
+hoisting();
+    
+
+
+
+
+
+
+        /*
+        var arr = []
+        for(var i=0; i<5; i++) {
+            console.log("i1: " + i);
+            arr[i] = function() {
+                console.log("i2: " + i);
+                return i;
+            }
+        }
+
+        for(var key in arr) {
+            console.log("key:"+key);
+            console.log("a:"+arr[key]());
+        }
+
+        (function() {
+            alert('ok');
+        })();
+        
+
+        const message= (function() {
+            const secret = "I am secret";
+            console.log(secret);
+            return `The Secret is ${secret.length} characters long.`
+        })();
+
+        console.log("message: " + message);
+        */
+
+        /*
+        (showName = function(name) {
+            alert(name || "NO name");
+        })();
+        showName('Rich');
+        showName();
+        */
+
+
+
+
+
+        /*
+       function factory_movie(title) {
+           return {
+               get_title : function() {
+                   return title;
+               },
+               set_title : function(_title) {
+                   title = _title;
+               }
+           }
+       }
+
+       ghost = factory_movie("Ghost");
+       matrix = factory_movie("Matrix");
+       console.log(ghost.get_title());
+       console.log(matrix.get_title());
+       ghost.set_title("mall");
+       console.log(ghost.get_title());
+       console.log(matrix.get_title());
+       */
+
+       
+    </script>
+    
+</body>
+</html>
