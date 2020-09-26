@@ -1,43 +1,47 @@
 window.addEventListener("load", function(){
     var wrapper = document.querySelector("#wrapper");
     var tbodyNode = wrapper.querySelector("table tbody");
-    var currentNode = tbodyNode.firstElementChild;
-    var upButton = wrapper.querySelector(".up-button");
-    var downButton = wrapper.querySelector(".down-button");
-
-
-    console.log(currentNode);
-
-    downButton.onclick = function() {
-        var nextNode = currentNode.nextElementSibling;
-        console.log(nextNode);
-
-        if(nextNode == null) {
-            alert("더이상 없어요");
-            return;
-        }
-
-        // tbodyNode.removeChild(nextNode);
-        // tbodyNode.insertBefore(nextNode, currentNode);
-
-        currentNode.insertAdjacentElement("beforebegin", nextNode);
-    } 
-
-    upButton.onclick = function() {
-        var prevNode = currentNode.previousElementSibling;
-        console.log(prevNode);
+    var delButton = wrapper.querySelector(".del-button");
+    var swapButton = wrapper.querySelector(".swap-button");
+    var overAll = wrapper.querySelector(".over-all");
+    
+    overAll.onchange = function() {
+        var inputAll = tbodyNode.querySelectorAll("input[type='checkbox']");
+        console.log(inputAll);
+        console.log(overAll.value);
+        console.log(overAll.checked);
         
-        if(prevNode == null) {
-            alert("더 없음");
-            return;
-        }
-
-        // tbodyNode.removeChild(prevNode);
-        // tbodyNode.insertBefore(currentNode, prevNode);
-
-        currentNode.insertAdjacentElement("afterend", prevNode);
+        for(var i=0; i < inputAll.length; i++) {
+            inputAll[i].checked = overAll.checked;
+        }        
     }
 
+    delButton.onclick = function() {
+        var inputs = tbodyNode.querySelectorAll("input[type='checkbox']:checked");
 
+        console.log(inputs.length);
+        for(var i=0; i < inputs.length; i++) {
+            inputs[i].parentElement.parentElement.remove();
+        }
+    }
+
+    swapButton.onclick = function() {
+        var inputs = tbodyNode.querySelectorAll("input[type='checkbox']:checked");
+
+        if(inputs.length > 2) {
+            alert("2개 이상선택 불가");
+            return;
+        }
+
+        var trs = [];
+        for(var i=0; i<inputs.length; i++) {
+            trs.push(inputs[i].parentElement.parentElement);
+        }
+
+        var cloneNode = trs[0].cloneNode(true);
+        trs[1].replaceWith(cloneNode);
+        trs[0].replaceWith(trs[1]);
+        
+    }
 
 })
